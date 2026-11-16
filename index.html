@@ -1120,8 +1120,12 @@
           ><a href="#contact">Contact</a>
         </div>
         <div class="nr">
-          <button class="btn d rs" type="button" hidden>⬇ Download CV</button
-          ><button id="th" type="button" aria-label="Toggle theme">
+          <!-- <button class="btn d rs" type="button" hidden>⬇ Download CV</button
+          > -->
+          <a class="btn d" href="Pasupathi-K-Resume.pdf" download>
+  ⬇ Download CV
+</a>
+          <button id="th" type="button" aria-label="Toggle theme">
             <b class="on">☀</b><b>☾</b>
           </button>
         </div>
@@ -1283,7 +1287,7 @@
         <div class="vis">
           <img
             alt="Pasupathi K"
-            src="pasupathi-hoodie.png"
+            src="images/pasupathi-hoodie.png"
           />
         </div>
       </div>
@@ -2009,7 +2013,7 @@
                   i;
                 for (i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
                 d.save({
-                  filename: "Pasupathi-K-Resume.pdf",
+                  filename: "Pasupathi-K-Resume (1).pdf",
                   data: new Blob([u], { type: "application/pdf" }),
                 }).then(
                   function () {
