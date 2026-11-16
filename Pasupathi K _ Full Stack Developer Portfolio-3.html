@@ -1,0 +1,2030 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Pasupathi K | Full Stack Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f4ff;
+        --bg2: #fff;
+        --card: #fff;
+        --line: #e4def8;
+        --tx: #1b1550;
+        --mu: #5d5a80;
+        --pr: #6d28d9;
+        --pr2: #2563eb;
+        --hero: linear-gradient(120deg, #f3f0ff, #e6dcff 55%, #c9b4ff);
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      :root[data-theme="dark"] {
+        --bg: #0b0f26;
+        --bg2: #10163a;
+        --card: #131a3d;
+        --line: #2a3262;
+        --tx: #f2f0ff;
+        --mu: #a9acd0;
+        --pr: #a78bfa;
+        --pr2: #60a5fa;
+        --hero: linear-gradient(120deg, #0d1130, #1a1450 60%, #3b1d8a);
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 76px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--tx);
+        font:
+          400 15px/1.6 Inter,
+          Arial,
+          sans-serif;
+        overflow-x: hidden;
+      }
+      .scroll-progress {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 11;
+        height: 3px;
+        pointer-events: none;
+      }
+      .scroll-progress span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, var(--pr2), var(--pr), #c026d3);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.08s linear;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: Poppins, Inter, sans-serif;
+        margin: 0;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .w {
+        max-width: 1120px;
+        margin: auto;
+        padding: 0 20px;
+      }
+      nav {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        z-index: 9;
+        background: color-mix(in srgb, var(--bg2) 88%, transparent);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      nav .w {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 62px;
+        gap: 14px;
+      }
+      .lgo {
+        font: 700 26px Poppins;
+      }
+      .lgo i {
+        color: var(--pr);
+        font-style: normal;
+      }
+      .nl {
+        display: flex;
+        gap: 26px;
+        font-weight: 500;
+        font-size: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        min-width: 0;
+        white-space: nowrap;
+      }
+      .nl::-webkit-scrollbar {
+        display: none;
+      }
+      .nl a {
+        padding: 20px 0 17px;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s ease, border-color 0.2s ease;
+      }
+      .nl a.on {
+        color: var(--pr);
+        border-color: var(--pr);
+      }
+      .nl a:hover {
+        color: var(--pr);
+      }
+      .nr {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 22px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--tx);
+        font: 600 14px Inter;
+        cursor: pointer;
+        transition: 0.25s;
+      }
+      .btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 22px rgba(109, 40, 217, 0.25);
+      }
+      .btn:active {
+        transform: translateY(0) scale(0.98);
+      }
+      .btn.p {
+        background: linear-gradient(90deg, var(--pr2), var(--pr));
+        color: #fff;
+        border: 0;
+      }
+      .btn.d {
+        background: #1b1550;
+        color: #fff;
+        border: 0;
+        padding: 9px 16px;
+      }
+      .rs[hidden] {
+        display: none;
+      }
+      #th {
+        width: 64px;
+        height: 34px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px;
+        font-size: 15px;
+      }
+      #th b {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 400;
+      }
+      #th .on {
+        background: #1b1550;
+        color: #fff;
+      }
+      .hero {
+        background: var(--hero);
+      }
+      .hg {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 20px;
+        align-items: center;
+        padding: 40px 20px 30px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--pr) 14%, transparent);
+        color: var(--pr);
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .hg h1 {
+        font-size: clamp(40px, 6.4vw, 72px);
+        line-height: 1.02;
+        margin: 16px 0 12px;
+        font-weight: 700;
+      }
+      .hg h1 span {
+        background: linear-gradient(90deg, var(--pr2), var(--pr) 60%, #c026d3);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: block;
+      }
+      .sub {
+        font: 600 19px Poppins;
+        margin-bottom: 10px;
+      }
+      .hg p {
+        color: var(--mu);
+        max-width: 520px;
+      }
+      .bt {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .chs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .ch {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        font-weight: 500;
+        font-size: 13px;
+        transition: transform 0.2s ease, border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .ch:hover {
+        transform: translateY(-2px);
+        border-color: var(--pr);
+        box-shadow: 0 6px 16px rgba(109, 40, 217, 0.12);
+      }
+      .vis {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .vis:before {
+        content: none;
+      }
+      .vis img {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 560px;
+        margin: auto;
+        border-radius: 12px;
+        box-shadow: none;
+        animation: hero-float 5s ease-in-out 1s infinite;
+      }
+      section {
+        padding: 40px 0;
+      }
+      .sec h2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .sec h2:after {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 4px;
+        border-radius: 4px;
+        background: var(--pr);
+        margin: 6px 0 18px;
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .rv h2:after {
+        transform: scaleX(0);
+      }
+      .rv.in h2:after {
+        transform: scaleX(1);
+      }
+      .ab {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+        gap: 26px;
+        align-items: center;
+      }
+      .ab img {
+        width: 100%;
+        max-width: 240px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 26px;
+        display: block;
+        background: #000;
+        box-shadow: 0 18px 36px rgba(109, 40, 217, 0.18);
+      }
+      .about-copy {
+        padding-right: 10px;
+      }
+      .about-copy h2 {
+        font-size: clamp(28px, 3vw, 38px);
+        margin-bottom: 8px;
+      }
+      .ab p {
+        color: var(--mu);
+        margin: 0 0 12px;
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      .ci {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        display: grid;
+        gap: 8px;
+      }
+      .ci li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--tx);
+      }
+      .ci-icon {
+        width: 16px;
+        height: 16px;
+        flex: 0 0 16px;
+        color: var(--pr);
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .st {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(110px, 1fr));
+        gap: 14px;
+        border: 0;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+      }
+      .st > div {
+        position: relative;
+        min-height: 96px;
+        padding: 16px 18px;
+        background: rgba(255, 255, 255, 0.26);
+        border: 1px solid rgba(142, 127, 198, 0.28);
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.22s ease, border-color 0.22s ease,
+          box-shadow 0.22s ease;
+      }
+      .st > div:hover {
+        transform: translateY(-3px);
+        border-color: var(--pr);
+        box-shadow: 0 10px 24px rgba(109, 40, 217, 0.12);
+        transition-delay: 0s;
+      }
+      .st b {
+        font: 700 28px Poppins;
+        color: var(--tx);
+        display: block;
+        line-height: 1.05;
+        margin-bottom: 2px;
+      }
+      .st span {
+        color: var(--mu);
+        font-size: 13px;
+        line-height: 1.3;
+      }
+      .tiles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        max-width: 1080px;
+      }
+      #skills .hd {
+        align-items: flex-end;
+        max-width: 1080px;
+        margin-bottom: 10px;
+      }
+      .tile {
+        display: flex;
+        flex: 0 0 87px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        height: 96px;
+        padding: 8px 4px;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: center;
+        transition: transform 0.22s ease, border-color 0.22s ease,
+          box-shadow 0.22s ease;
+      }
+      .tile:hover {
+        transform: translateY(-4px);
+        border-color: var(--pr);
+        box-shadow: 0 10px 24px rgba(109, 40, 217, 0.14);
+        transition-delay: 0s;
+      }
+      .tile svg {
+        display: block;
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .tile:hover svg {
+        transform: translateY(-2px) rotate(5deg) scale(1.08);
+      }
+      .ex {
+        position: relative;
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 24px;
+        margin-bottom: 8px;
+        padding: 4px 0 18px;
+      }
+      .ex::before {
+        content: "";
+        position: absolute;
+        left: 21px;
+        top: 17px;
+        width: 9px;
+        height: 9px;
+        border: 2px solid var(--pr);
+        border-radius: 50%;
+        background: var(--bg);
+        z-index: 1;
+        transform: scale(0.45);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      .ex::after {
+        content: "";
+        position: absolute;
+        left: 24px;
+        top: 28px;
+        bottom: -8px;
+        width: 1px;
+        background: color-mix(in srgb, var(--pr) 36%, var(--line));
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.7s ease;
+      }
+      .rv.in > .ex::before {
+        transform: scale(1);
+        box-shadow: 0 0 0 5px color-mix(in srgb, var(--pr) 12%, transparent);
+      }
+      .rv.in > .ex::after {
+        transform: scaleY(1);
+      }
+      .ex.timeline-last::after {
+        display: none;
+      }
+      .dt {
+        min-height: 100%;
+        padding: 0 12px 0 52px;
+        text-align: left;
+        border-right: 1px solid var(--line);
+      }
+      .dt span {
+        display: inline-block;
+        padding: 4px 9px;
+        border-radius: 8px;
+        background: color-mix(in srgb, var(--pr) 14%, transparent);
+        color: var(--pr);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .lg {
+        display: grid;
+        place-items: center;
+        width: 70px;
+        height: 48px;
+        margin-top: 8px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+        font: 700 22px Poppins;
+        color: var(--pr2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .ex:hover .lg {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(109, 40, 217, 0.12);
+      }
+      .ex h3 {
+        font-size: 17px;
+        line-height: 1.4;
+      }
+      .ex small {
+        color: var(--mu);
+        font-size: 14px;
+      }
+      .ex ul {
+        margin: 5px 0 0;
+        padding-left: 18px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--mu);
+      }
+      .ex li::marker {
+        color: var(--pr);
+      }
+      .hd {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+      }
+      .hd a,
+      .hd button {
+        color: var(--pr);
+        font-weight: 600;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        font: 600 14px Inter;
+      }
+      .pg {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+      }
+      .pc {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 14px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .pc:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 34px rgba(109, 40, 217, 0.2);
+        border-color: color-mix(in srgb, var(--pr) 55%, var(--line));
+        transition-delay: 0s;
+      }
+      .pc.more {
+        display: none;
+      }
+      .pg.all .pc.more {
+        display: block;
+      }
+      .ph {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 10px;
+        font-family: Poppins;
+        font-size: 16px;
+      }
+      .ph i {
+        font-style: normal;
+      }
+      .th {
+        height: 96px;
+        border-radius: 10px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .th u {
+        height: 8px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.55);
+        transform: scaleX(0.78);
+        transform-origin: left;
+        transition: transform 0.35s ease;
+      }
+      .pc:hover .th u {
+        transform: scaleX(1);
+      }
+      .pc:hover .th u:nth-child(2) {
+        transition-delay: 0.04s;
+      }
+      .pc:hover .th u:nth-child(3) {
+        transition-delay: 0.08s;
+      }
+      .th u:nth-child(2) {
+        width: 70%;
+      }
+      .th u:nth-child(3) {
+        width: 45%;
+      }
+      .pc p {
+        font-size: 15px;
+        color: var(--mu);
+        margin: 10px 0;
+      }
+      .tg {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tg span {
+        padding: 2px 10px;
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--pr) 13%, transparent);
+        color: var(--pr);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 30px;
+      }
+      .education-panel {
+        padding-right: 28px;
+        border-right: 1px solid var(--line);
+      }
+      .panel-heading {
+        margin-bottom: 6px;
+        font-size: 26px !important;
+      }
+      .edu-entry {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .edu-icon {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        flex: 0 0 40px;
+        border-radius: 12px;
+        background: color-mix(in srgb, var(--pr) 11%, transparent);
+        color: var(--pr);
+        transition: transform 0.22s ease, background-color 0.22s ease;
+      }
+      .edu-entry:hover .edu-icon {
+        transform: rotate(-4deg) scale(1.06);
+        background: color-mix(in srgb, var(--pr) 18%, transparent);
+      }
+      .edu-icon svg {
+        width: 23px;
+        height: 23px;
+      }
+      .edu-copy {
+        display: grid;
+        gap: 3px;
+        min-width: 0;
+      }
+      .edu-copy b {
+        font-size: 15px;
+        line-height: 1.45;
+      }
+      .edu-copy span,
+      .edu-copy small {
+        color: var(--mu);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .kx {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 18px;
+        font-size: 14px;
+      }
+      .kx li {
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        line-height: 1.45;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      .kx li:hover {
+        color: var(--pr);
+        transform: translateX(4px);
+        transition-delay: 0s;
+      }
+      .kx li::before {
+        content: "✓";
+        color: var(--pr);
+        font-weight: 700;
+        flex: 0 0 auto;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+      }
+      .gt {
+        background: linear-gradient(90deg, #3d1470 0%, #4e1d8f 35%, #5c2ec6 100%);
+        color: #fff;
+        padding: 44px 0 52px;
+        margin-top: 30px;
+      }
+      .gg {
+        display: grid;
+        grid-template-columns: 0.95fr 1.2fr;
+        gap: 28px;
+        align-items: center;
+      }
+      .contact-info {
+        display: grid;
+        gap: 16px;
+      }
+      .contact-info h2 {
+        font-size: clamp(28px, 3vw, 38px);
+        margin: 0;
+      }
+      .contact-info p {
+        opacity: 0.9;
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+      .contact-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+      .contact-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        opacity: 0.96;
+        font-size: 15px;
+      }
+      .contact-list .mini-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 12px;
+      }
+      .socials {
+        display: flex;
+        gap: 12px;
+        margin-top: 4px;
+      }
+      .socials a {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        font-weight: 700;
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+      }
+      .socials a:hover {
+        transform: translateY(-3px) scale(1.06);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        transition-delay: 0s;
+      }
+      .socials .linkedin {
+        border-radius: 9px;
+        background: #0a66c2;
+        border-color: #0a66c2;
+      }
+      .socials .github {
+        background: #25292e;
+        border-color: #25292e;
+      }
+      .socials .github svg {
+        width: 20px;
+        height: 20px;
+      }
+      .socials .whatsapp {
+        background: #25d366;
+        border-color: #25d366;
+      }
+      .socials .whatsapp svg {
+        width: 19px;
+        height: 19px;
+      }
+      .fm {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 20px 36px rgba(22, 10, 52, 0.18);
+        padding: 24px 20px 18px;
+        display: grid;
+        gap: 12px;
+        color: #1b1550;
+      }
+      .fm .r {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .fm label {
+        display: grid;
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #4b4c63;
+      }
+      .fm input,
+      .fm textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d9d3f2;
+        border-radius: 10px;
+        font: 14px Inter;
+        color: #1b1550;
+        background: #fff;
+        resize: vertical;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .fm input:focus,
+      .fm textarea:focus {
+        outline: none;
+        border-color: var(--pr);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--pr) 14%, transparent);
+      }
+      .fm textarea {
+        min-height: 100px;
+      }
+      .send-btn {
+        justify-self: start;
+        margin-top: 6px;
+      }
+      #fs {
+        color: #5d5a80;
+        font-size: 12.5px;
+        min-height: 18px;
+      }
+      :root[data-theme="dark"] .gt {
+        background: linear-gradient(90deg, #11132f 0%, #21164a 50%, #302064 100%);
+      }
+      :root[data-theme="dark"] .fm {
+        background: #131a3d;
+        color: var(--tx);
+        border: 1px solid var(--line);
+        box-shadow: 0 20px 36px rgba(0, 0, 0, 0.3);
+      }
+      :root[data-theme="dark"] .fm label {
+        color: #d6d5eb;
+      }
+      :root[data-theme="dark"] .fm input,
+      :root[data-theme="dark"] .fm textarea {
+        color: var(--tx);
+        background: #0b0f26;
+        border-color: #343c6b;
+      }
+      :root[data-theme="dark"] .fm input::placeholder,
+      :root[data-theme="dark"] .fm textarea::placeholder {
+        color: #a9acd0;
+        opacity: 1;
+      }
+      :root[data-theme="dark"] #fs {
+        color: #c4c6e2;
+      }
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--line);
+        padding: 14px 0;
+        font-size: 13px;
+        color: var(--mu);
+      }
+      footer .w {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      footer nav {
+        all: unset;
+      }
+      footer .fl {
+        display: flex;
+        gap: 18px;
+      }
+      footer .fl a {
+        transition: color 0.2s ease;
+      }
+      footer .fl a:hover {
+        color: var(--pr);
+      }
+      #up {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 0;
+        background: var(--pr);
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      #up:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(109, 40, 217, 0.24);
+      }
+      .rv {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .rv.in {
+        opacity: 1;
+        transform: none;
+      }
+      .rv .st > div,
+      .rv .tiles > .tile,
+      .rv .pg > .pc,
+      .rv > .ex,
+      .rv.two > div,
+      .rv.gg > .contact-info,
+      .rv.gg > .fm,
+      .rv .kx > li {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.5s ease, transform 0.5s ease,
+          border-color 0.22s ease, box-shadow 0.22s ease, color 0.2s ease;
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+      .rv.in .st > div,
+      .rv.in .tiles > .tile,
+      .rv.in .pg > .pc,
+      .rv.in > .ex,
+      .rv.in.two > div,
+      .rv.in.gg > .contact-info,
+      .rv.in.gg > .fm,
+      .rv.in .kx > li {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .rv.in .st > div:hover,
+      .rv.in .tiles > .tile:hover,
+      .rv.in .pg > .pc:hover,
+      .rv.in .kx > li:hover {
+        transition-delay: 0s;
+      }
+      @keyframes hero-rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes hero-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      @keyframes hero-image-enter {
+        from {
+          opacity: 0;
+          transform: translateX(24px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+      .hero .hg > div:first-child > * {
+        animation: hero-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      .hero .hg > div:first-child > :nth-child(2) {
+        animation-delay: 0.07s;
+      }
+      .hero .hg > div:first-child > :nth-child(3) {
+        animation-delay: 0.14s;
+      }
+      .hero .hg > div:first-child > :nth-child(4) {
+        animation-delay: 0.21s;
+      }
+      .hero .hg > div:first-child > :nth-child(5) {
+        animation-delay: 0.28s;
+      }
+      .hero .hg > div:first-child > :nth-child(6) {
+        animation-delay: 0.35s;
+      }
+      .hero .vis {
+        animation: hero-image-enter 0.75s 0.12s cubic-bezier(0.2, 0.7, 0.2, 1)
+          both;
+      }
+      @media (max-width: 860px) {
+        .hg,
+        .gg,
+        .two,
+        .ab {
+          grid-template-columns: 1fr;
+        }
+        .education-panel {
+          padding: 0 0 22px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .ab .st {
+          grid-column: 1/-1;
+        }
+        .ex {
+          grid-template-columns: 205px minmax(0, 1fr);
+          gap: 16px;
+        }
+        .dt {
+          padding-left: 48px;
+        }
+        .dt {
+          text-align: left;
+        }
+        .nl {
+          gap: 16px;
+        }
+        .nr .d {
+          display: none;
+        }
+      }
+      @media (max-width: 600px) {
+        #skills .hd {
+          display: block;
+        }
+        #skills .hd small {
+          display: block;
+          text-align: right;
+        }
+        .ex {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 8px;
+        }
+        .dt {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding-left: 48px;
+          border-right: 0;
+        }
+        .lg {
+          width: 52px;
+          height: 36px;
+          margin: 0;
+          font-size: 18px;
+        }
+        .ex > div:not(.dt) {
+          margin-left: 48px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+          transform: none !important;
+          scroll-behavior: auto !important;
+        }
+        .rv,
+        .rv * {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <nav>
+      <div class="w">
+        <a class="lgo" href="#home">PK<i>.</i></a>
+        <div class="nl">
+          <a href="#home">Home</a><a href="#about">About</a
+          ><a href="#experience">Experience</a><a href="#projects">Projects</a
+          ><a href="#education">Education</a><a href="#skills">Skills</a
+          ><a href="#contact">Contact</a>
+        </div>
+        <div class="nr">
+          <button class="btn d rs" type="button" hidden>⬇ Download CV</button
+          ><button id="th" type="button" aria-label="Toggle theme">
+            <b class="on">☀</b><b>☾</b>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <header class="hero" id="home">
+      <div class="w hg">
+        <div>
+          <span class="tag">&lt;/&gt; Full Stack Developer</span>
+          <h1>Hi, I’m<span>Pasupathi K.</span></h1>
+          <div class="sub">API Integration | Web Development</div>
+          <p>
+            Building scalable B2B/B2C platforms with React.js, PHP, Laravel and
+            MySQL, from responsive interfaces to optimized, high-traffic booking
+            workflows.
+          </p>
+          <div class="bt">
+            <a class="btn p" href="#contact">✈ Hire Me</a
+            ><a class="btn" href="#projects">Explore My Work</a
+            ><button class="btn rs" type="button" hidden>
+              ⬇ Download Résumé</button
+            ><a class="btn" href="https://linkedin.com/in/pasupathi-k"
+              >in LinkedIn</a
+            >
+          </div>
+          <div class="chs">
+            <span class="ch"
+              ><svg
+                viewBox="0 0 48 48"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <rect width="48" height="48" rx="11" fill="#20232a" />
+                <g fill="none" stroke="#61dafb" stroke-width="2">
+                  <ellipse cx="24" cy="24" rx="18" ry="6.8" />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="18"
+                    ry="6.8"
+                    transform="rotate(60 24 24)"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="18"
+                    ry="6.8"
+                    transform="rotate(120 24 24)"
+                  />
+                </g>
+                <circle cx="24" cy="24" r="3" fill="#61dafb" /></svg
+              >React.js</span
+            ><span class="ch"
+              ><svg
+                viewBox="0 0 48 48"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <rect width="48" height="48" rx="11" fill="#777bb4" />
+                <ellipse cx="24" cy="24" rx="19" ry="11" fill="#9a9fd1" />
+                <text
+                  x="24"
+                  y="29"
+                  font-size="15"
+                  fill="#1d1f3d"
+                  font-family="Poppins,Arial,sans-serif"
+                  font-weight="700"
+                  text-anchor="middle"
+                >
+                  php
+                </text></svg
+              >PHP</span
+            ><span class="ch"
+              ><svg
+                viewBox="0 0 48 48"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <rect width="48" height="48" rx="11" fill="#ff2d20" />
+                <path
+                  d="M12 15l8 4.5v9L12 33zM20 19.5l8-4.5 8 4.5-8 4.5zM28 24l8-4.5V33l-8 4.5z"
+                  fill="#fff"
+                /></svg
+              >Laravel</span
+            ><span class="ch"
+              ><svg
+                viewBox="0 0 48 48"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <rect width="48" height="48" rx="11" fill="#00758f" />
+                <g fill="none" stroke="#fff" stroke-width="2">
+                  <ellipse cx="24" cy="14" rx="11" ry="4.5" />
+                  <path
+                    d="M13 14v20c0 2.5 5 4.5 11 4.5s11-2 11-4.5V14M13 24c0 2.5 5 4.5 11 4.5s11-2 11-4.5"
+                  />
+                </g></svg
+              >MySQL</span
+            ><span class="ch"
+              ><svg
+                viewBox="0 0 48 48"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <rect width="48" height="48" rx="11" fill="#5382a1" />
+                <path
+                  d="M20 12c4 4-4 6 1 11M27 11c4 5-5 7 0 13"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M14 28h18v3c0 4-4 7-9 7s-9-3-9-7z"
+                  fill="#f89820"
+                /></svg
+              >Java</span
+            ><span class="ch"
+              ><svg
+                viewBox="0 0 48 48"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <rect width="48" height="48" rx="11" fill="#6db33f" />
+                <path
+                  d="M34 13C20 14 12 23 14 34c1 2 3 2 5 1 8-3 14-10 15-22z"
+                  fill="#fff"
+                /></svg
+              >Spring Boot</span
+            ><span class="ch"
+              ><svg
+                viewBox="0 0 48 48"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <rect width="48" height="48" rx="11" fill="#2b2f55" />
+                <text
+                  x="24"
+                  y="29"
+                  font-size="12"
+                  fill="#00d9ff"
+                  font-family="Poppins,Arial,sans-serif"
+                  font-weight="700"
+                  text-anchor="middle"
+                >
+                  {API}
+                </text></svg
+              >API Integration</span
+            >
+          </div>
+        </div>
+        <div class="vis">
+          <img
+            alt="Pasupathi K"
+            src="images/pasupathi-hoodie.png"
+          />
+        </div>
+      </div>
+    </header>
+    <section id="about" class="sec">
+      <div class="w rv">
+        <div class="ab">
+          <div class="about-copy">
+            <h2>About Me</h2>
+            <p>
+              I’m Pasupathi K, a Full Stack Developer with 3+ years of
+              experience in React.js, PHP, Laravel, CodeIgniter and MySQL. I
+              build scalable web applications, integrate REST and XML APIs, and
+              optimize databases for real-world business workflows.
+            </p>
+            <ul class="ci">
+              <li>
+                <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+                Chennai, India
+              </li>
+              <li>
+                <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+                <a href="mailto:pasupathi7684@gmail.com">pasupathi7684@gmail.com</a>
+              </li>
+              <li>
+                <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 3h4l2 5-2.5 1.5a15 15 0 0 0 6 6L16 13l5 2v4c0 1-1 2-2 2C10 20 4 14 3 5c0-1 1-2 2-2Z" />
+                </svg>
+                <a href="tel:+917603914147">+91 76039 14147</a>
+              </li>
+            </ul>
+          </div>
+          <div class="st">
+            <div>
+              <b data-count-to="2">2</b>
+              <span>Companies</span>
+            </div>
+            <div>
+              <b data-count-to="6" data-count-suffix="+">6+</b>
+              <span>Production systems</span>
+            </div>
+            <div>
+              <b data-count-to="7.5">7.5</b>
+              <span>CGPA, B.Sc. Computer Science</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="sec">
+      <div class="w rv">
+        <div class="hd">
+          <h2>My Skills</h2>
+          <small style="color: var(--mu)"
+            >Technologies &amp; Tools I Work With</small
+          >
+        </div>
+        <div class="tiles">
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#20232a" />
+              <g fill="none" stroke="#61dafb" stroke-width="2">
+                <ellipse cx="24" cy="24" rx="18" ry="6.8" />
+                <ellipse
+                  cx="24"
+                  cy="24"
+                  rx="18"
+                  ry="6.8"
+                  transform="rotate(60 24 24)"
+                />
+                <ellipse
+                  cx="24"
+                  cy="24"
+                  rx="18"
+                  ry="6.8"
+                  transform="rotate(120 24 24)"
+                />
+              </g>
+              <circle cx="24" cy="24" r="3" fill="#61dafb" /></svg
+            ><span>React.js</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#f7df1e" />
+              <text
+                x="24"
+                y="35"
+                font-size="20"
+                fill="#111"
+                font-family="Poppins,Arial,sans-serif"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                JS
+              </text></svg
+            ><span>JavaScript</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#777bb4" />
+              <ellipse cx="24" cy="24" rx="19" ry="11" fill="#9a9fd1" />
+              <text
+                x="24"
+                y="29"
+                font-size="15"
+                fill="#1d1f3d"
+                font-family="Poppins,Arial,sans-serif"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                php
+              </text></svg
+            ><span>PHP</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#ff2d20" />
+              <path
+                d="M12 15l8 4.5v9L12 33zM20 19.5l8-4.5 8 4.5-8 4.5zM28 24l8-4.5V33l-8 4.5z"
+                fill="#fff"
+              /></svg
+            ><span>Laravel</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#ee4623" />
+              <text
+                x="24"
+                y="31"
+                font-size="19"
+                fill="#fff"
+                font-family="Poppins,Arial,sans-serif"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                CI
+              </text></svg
+            ><span>CodeIgniter</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#5382a1" />
+              <path
+                d="M20 12c4 4-4 6 1 11M27 11c4 5-5 7 0 13"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path d="M14 28h18v3c0 4-4 7-9 7s-9-3-9-7z" fill="#f89820" /></svg
+            ><span>Java</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#6db33f" />
+              <path
+                d="M34 13C20 14 12 23 14 34c1 2 3 2 5 1 8-3 14-10 15-22z"
+                fill="#fff"
+              /></svg
+            ><span>Spring Boot</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#00758f" />
+              <g fill="none" stroke="#fff" stroke-width="2">
+                <ellipse cx="24" cy="14" rx="11" ry="4.5" />
+                <path
+                  d="M13 14v20c0 2.5 5 4.5 11 4.5s11-2 11-4.5V14M13 24c0 2.5 5 4.5 11 4.5s11-2 11-4.5"
+                />
+              </g></svg
+            ><span>MySQL</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#7952b3" />
+              <text
+                x="24"
+                y="35"
+                font-size="28"
+                fill="#fff"
+                font-family="Poppins,Arial,sans-serif"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                B
+              </text></svg
+            ><span>Bootstrap</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#0769ad" />
+              <text
+                x="24"
+                y="31"
+                font-size="19"
+                fill="#fff"
+                font-family="Poppins,Arial,sans-serif"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                jQ
+              </text></svg
+            ><span>jQuery</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#f05032" />
+              <path d="M24 9l15 15-15 15L9 24z" fill="#fff" />
+              <circle cx="24" cy="24" r="3" fill="#f05032" /></svg
+            ><span>Git</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#809cc9" />
+              <text
+                x="24"
+                y="29"
+                font-size="14"
+                fill="#fff"
+                font-family="Poppins,Arial,sans-serif"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                SVN
+              </text></svg
+            ><span>SVN</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#1a5fb4" />
+              <path
+                d="M13 18h20l-5-5M35 30H15l5 5"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+            ><span>WinSCP</span>
+          </div>
+          <div class="tile">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+              <rect width="48" height="48" rx="11" fill="#bf0000" />
+              <text
+                x="24"
+                y="31"
+                font-size="18"
+                fill="#fff"
+                font-family="Poppins,Arial,sans-serif"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                FZ
+              </text></svg
+            ><span>FileZilla</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="experience" class="sec">
+      <div class="w rv">
+        <h2>Experience</h2>
+        <div class="ex">
+          <div class="dt">
+            <span>Jul 2025 – Present</span>
+            <div class="lg">DSS</div>
+          </div>
+          <div>
+            <h3>Distributed Software Solutions Pvt Ltd</h3>
+            <small>Software Developer · Chennai (Remote)</small>
+            <ul>
+              <li>
+                Build B2B/B2C travel platform features with React.js, PHP,
+                Laravel, CodeIgniter and MySQL.
+              </li>
+              <li>
+                Reusable React UI for Travel Agent, Hotel and Restaurant Booking
+                modules.
+              </li>
+              <li>
+                Integrate REST APIs and optimize MySQL queries for high-traffic
+                hotel search.
+              </li>
+              <li>Support production releases via SVN and WinSCP with QA.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ex">
+          <div class="dt">
+            <span>Apr 2023 – Jun 2025</span>
+            <div class="lg">VT</div>
+          </div>
+          <div>
+            <h3>VT Technologies Pvt Ltd</h3>
+            <small>Junior Programmer · Chennai (On-site)</small>
+            <ul>
+              <li>
+                Built school/college ERP, manufacturing ERP and custom
+                e-commerce platforms.
+              </li>
+              <li>
+                Developed a news update CRM and integrated payment gateways.
+              </li>
+              <li>
+                Restructured MySQL schemas to speed up reports and handle higher
+                load.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h2 style="margin-top: 26px">Internship</h2>
+        <div class="ex timeline-last">
+          <div class="dt">
+            <span>Sep 2022 – Mar 2023</span>
+            <div class="lg">KI</div>
+          </div>
+          <div>
+            <h3>KaaShiv InfoTech</h3>
+            <small>Java Full Stack Developer Intern · Chennai (On-site)</small>
+            <ul>
+              <li>
+                Built a Student Complaint Portal using Java, Spring Boot, MySQL,
+                HTML, CSS, JavaScript, AJAX and jQuery.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="sec">
+      <div class="w rv">
+        <div class="hd">
+          <h2>Featured Projects</h2>
+          <button id="va" type="button">View All Projects →</button>
+        </div>
+        <div class="pg" id="pg">
+          <div class="pc">
+            <div class="ph"><i>✈</i><b>B2B/B2C Booking Platform</b></div>
+            <div
+              class="th"
+              style="background: linear-gradient(135deg, #0ea5e9, #6366f1)"
+            >
+              <u></u><u></u><u></u>
+            </div>
+            <p>
+              Multi-tenant travel agent, hotel and restaurant booking with a
+              supplier REST integration layer.
+            </p>
+            <div class="tg">
+              <span>React</span><span>Laravel</span><span>MySQL</span>
+            </div>
+          </div>
+          <div class="pc">
+            <div class="ph"><i>🎓</i><b>School & College ERP</b></div>
+            <div
+              class="th"
+              style="background: linear-gradient(135deg, #22c55e, #0d9488)"
+            >
+              <u></u><u></u><u></u>
+            </div>
+            <p>
+              Admissions, attendance and fee management with fast admin
+              dashboards.
+            </p>
+            <div class="tg">
+              <span>PHP</span><span>Laravel</span><span>MySQL</span>
+            </div>
+          </div>
+          <div class="pc">
+            <div class="ph"><i>🛒</i><b>Custom E-commerce</b></div>
+            <div
+              class="th"
+              style="background: linear-gradient(135deg, #f59e0b, #ef4444)"
+            >
+              <u></u><u></u><u></u>
+            </div>
+            <p>
+              Catalog, cart, orders and payment-gateway callbacks with AJAX
+              checkout.
+            </p>
+            <div class="tg">
+              <span>PHP</span><span>AJAX</span><span>REST API</span>
+            </div>
+          </div>
+          <div class="pc">
+            <div class="ph"><i>🏭</i><b>Manufacturing ERP</b></div>
+            <div
+              class="th"
+              style="background: linear-gradient(135deg, #8b5cf6, #ec4899)"
+            >
+              <u></u><u></u><u></u>
+            </div>
+            <p>
+              Inventory, production and reporting modules for a manufacturing
+              client.
+            </p>
+            <div class="tg">
+              <span>PHP</span><span>CodeIgniter</span><span>MySQL</span>
+            </div>
+          </div>
+          <div class="pc more">
+            <div class="ph"><i>📰</i><b>News Update CRM</b></div>
+            <div
+              class="th"
+              style="background: linear-gradient(135deg, #06b6d4, #3b82f6)"
+            >
+              <u></u><u></u><u></u>
+            </div>
+            <p>CRM that automates customer communication and news updates.</p>
+            <div class="tg">
+              <span>PHP</span><span>MySQL</span><span>JavaScript</span>
+            </div>
+          </div>
+          <div class="pc more">
+            <div class="ph"><i>📝</i><b>Student Complaint Portal</b></div>
+            <div
+              class="th"
+              style="background: linear-gradient(135deg, #a855f7, #6366f1)"
+            >
+              <u></u><u></u><u></u>
+            </div>
+            <p>
+              Portal for students to submit and track complaints (internship
+              project).
+            </p>
+            <div class="tg">
+              <span>Java</span><span>Spring Boot</span><span>MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="education" class="sec">
+      <div class="w rv two">
+        <div class="education-panel">
+          <h2 class="panel-heading">Education</h2>
+          <div class="edu-entry">
+            <span class="edu-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3 2 8l10 5 10-5-10-5Zm-7 8v5l7 4 7-4v-5l-7 3.5L5 11Z" fill="currentColor" />
+                <path d="M21 9v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </span>
+            <div class="edu-copy">
+              <b>B.Sc. – Computer Science</b>
+              <span>Kamadhenu College of Arts and Science, Dharmapuri</span>
+              <small>2019 – 2022 · CGPA 7.5</small>
+            </div>
+          </div>
+        </div>
+        <div class="expertise-panel">
+          <h2 class="panel-heading">Key Expertise</h2>
+          <ul class="kx">
+            <li>Full Stack Web Development</li>
+            <li>REST &amp; XML API Integration</li>
+            <li>MySQL Query Optimization</li>
+            <li>Schema Design &amp; Indexing</li>
+            <li>SVN / Git &amp; WinSCP Releases</li>
+            <li>Agile Delivery with QA</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div class="gt" id="contact">
+      <div class="w gg rv">
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          <p>
+            Have a project, opportunity or collaboration in mind? I’d love to
+            hear from you.
+          </p>
+          <ul class="contact-list">
+            <li><span class="mini-icon">✉</span><a href="mailto:pasupathi7684@gmail.com">pasupathi7684@gmail.com</a></li>
+            <li><span class="mini-icon">📞</span><a href="tel:+917603914147">+91 76039 14147</a></li>
+            <li><span class="mini-icon">📍</span> Chennai, India</li>
+          </ul>
+          <div class="socials">
+            <a
+              class="linkedin"
+              href="https://linkedin.com/in/pasupathi-k"
+              aria-label="LinkedIn"
+              >in</a
+            >
+            <a class="github" href="https://github.com/" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M7 3.2 4.3 2l.8 5.1a8.4 8.4 0 0 0-2 5.5c0 4 2.7 6.5 7.1 7v-2.4c0-1 .4-1.8 1-2.2-3.1-.4-4.7-1.7-4.7-4.1 0-.9.4-1.8 1.1-2.5-.2-.8-.1-1.7.3-2.5.9 0 1.8.4 2.6.9a9.4 9.4 0 0 1 4.3 0c.8-.5 1.7-.9 2.6-.9.4.8.5 1.7.3 2.5.7.7 1.1 1.6 1.1 2.5 0 2.4-1.6 3.7-4.7 4.1.6.4 1 1.2 1 2.2v2.4c4.4-.5 7.1-3 7.1-7a8.4 8.4 0 0 0-2-5.5l.8-5.1-2.7 1.2a9.7 9.7 0 0 0-9.2 0Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            <a
+              class="whatsapp"
+              href="https://wa.me/917603914147"
+              aria-label="WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.2-4A8 8 0 1 1 20 11.7Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 8.1c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.4 0 .6.5.8 1.2 1.4 2 1.8.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.4.7c.2.1.3.2.3.4 0 .4-.2 1-.6 1.3-.4.4-1 .6-1.6.5-1-.1-2.2-.7-3.4-1.7-1-.9-1.8-2.1-2-3.1-.2-.9.1-1.7.5-2.2Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="fm">
+          <div class="r">
+            <label>
+              Your Name *
+              <input id="fn" placeholder="Your Name *" />
+            </label>
+            <label>
+              Your Email *
+              <input id="fe" placeholder="Your Email *" />
+            </label>
+          </div>
+          <label>
+            Subject
+            <input id="fj" placeholder="Subject" />
+          </label>
+          <label>
+            Your Message *
+            <textarea id="fg" rows="4" placeholder="Your Message *"></textarea>
+          </label>
+          <button class="btn p send-btn" id="fb" type="button">
+            ✈ Send Message
+          </button>
+          <div id="fs"></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="w">
+        <span class="lgo" style="font-size: 20px">PK<i>.</i></span
+        ><span>© 2026 Pasupathi K. All rights reserved.</span
+        ><span class="fl"
+          ><a href="#home">Home</a><a href="#about">About</a
+          ><a href="#experience">Experience</a><a href="#projects">Projects</a
+          ><a href="#contact">Contact</a></span
+        ><button id="up" type="button" aria-label="Back to top">↑</button>
+      </div>
+    </footer>
+    <script>
+      var de = document.documentElement,
+        E = "pasupathi7684@gmail.com";
+      document.getElementById("th").onclick = function () {
+        var d = de.dataset.theme == "dark" ? "light" : "dark";
+        de.dataset.theme = d;
+        var b = this.children;
+        b[0].className = d == "light" ? "on" : "";
+        b[1].className = d == "dark" ? "on" : "";
+      };
+      document.getElementById("va").onclick = function () {
+        var g = document.getElementById("pg");
+        g.classList.toggle("all");
+        this.textContent = g.classList.contains("all")
+          ? "Show Fewer ↑"
+          : "View All Projects →";
+      };
+      document.getElementById("up").onclick = function () {
+        scrollTo({ top: 0, behavior: "smooth" });
+      };
+      var progressBar = document.querySelector(".scroll-progress span"),
+        progressPending = false;
+      function updateScrollProgress() {
+        var maxScroll =
+            document.documentElement.scrollHeight - window.innerHeight,
+          progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+        progressBar.style.transform =
+          "scaleX(" + Math.max(0, Math.min(progress, 1)) + ")";
+        progressPending = false;
+      }
+      function queueScrollProgress() {
+        if (!progressPending) {
+          progressPending = true;
+          window.requestAnimationFrame(updateScrollProgress);
+        }
+      }
+      window.addEventListener("scroll", queueScrollProgress, {
+        passive: true,
+      });
+      window.addEventListener("resize", queueScrollProgress);
+      queueScrollProgress();
+      function animateCounter(counter) {
+        if (counter.dataset.counted) return;
+        var target = Number(counter.dataset.countTo),
+          finalValue = counter.textContent,
+          suffix = counter.dataset.countSuffix || "",
+          decimals = counter.dataset.countTo.indexOf(".") === -1 ? 0 : 1,
+          startTime;
+        counter.dataset.counted = "true";
+        function updateCounter(now) {
+          if (startTime === undefined) startTime = now;
+          var progress = Math.min((now - startTime) / 900, 1),
+            eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent =
+            (target * eased).toFixed(decimals) + suffix;
+          if (progress < 1) {
+            window.requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = finalValue;
+          }
+        }
+        window.requestAnimationFrame(updateCounter);
+      }
+      document
+        .querySelectorAll(
+          ".st, .tiles, .pg, .kx, .two.rv, .gg.rv",
+        )
+        .forEach(function (group) {
+          Array.prototype.forEach.call(group.children, function (item, index) {
+            item.style.setProperty(
+              "--reveal-delay",
+              Math.min(index * 55, 385) + "ms",
+            );
+          });
+        });
+      document.querySelectorAll(".rv > .ex").forEach(function (item, index) {
+        item.style.setProperty(
+          "--reveal-delay",
+          Math.min(index * 75, 300) + "ms",
+        );
+      });
+      var io = new IntersectionObserver(
+        function (e) {
+          e.forEach(function (x) {
+            if (x.isIntersecting) {
+              x.target.classList.add("in");
+              if (
+                !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ) {
+                x.target
+                  .querySelectorAll(".st b[data-count-to]")
+                  .forEach(animateCounter);
+              }
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".rv").forEach(function (x) {
+        io.observe(x);
+      });
+      var L = [].slice.call(document.querySelectorAll(".nl a")),
+        so = new IntersectionObserver(
+          function (e) {
+            e.forEach(function (x) {
+              if (x.isIntersecting)
+                L.forEach(function (a) {
+                  a.classList.toggle(
+                    "on",
+                    a.getAttribute("href") == "#" + x.target.id,
+                  );
+                });
+            });
+          },
+          { rootMargin: "-45% 0px -50% 0px" },
+        );
+      document
+        .querySelectorAll("header[id],section[id],div.gt[id]")
+        .forEach(function (x) {
+          so.observe(x);
+        });
+      document.querySelectorAll('a[href^="http"]').forEach(function (a) {
+        a.target = "_blank";
+        a.rel = "noopener";
+      });
+      document.getElementById("fb").onclick = function () {
+        var n = fn.value.trim(),
+          e = fe.value.trim(),
+          j = fj.value.trim() || "Portfolio enquiry",
+          m = fg.value.trim(),
+          s = document.getElementById("fs");
+        if (!n || !e || !m) {
+          s.textContent = "Please fill in name, email and message.";
+          return;
+        }
+        var t = "Subject: " + j + "\nFrom: " + n + " (" + e + ")\n\n" + m;
+        try {
+          navigator.clipboard.writeText(t);
+        } catch (x) {}
+        var a = document.createElement("a");
+        a.href =
+          "mailto:" +
+          E +
+          "?subject=" +
+          encodeURIComponent(j) +
+          "&body=" +
+          encodeURIComponent(m + "\n\n" + n + " (" + e + ")");
+        a.target = "_blank";
+        a.click();
+        s.textContent =
+          "If your mail app did not open, your message was copied. Please email it to " +
+          E +
+          ".";
+      };
+      (function () {
+        var PDF =
+            "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQ29udGVudHMgOSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA4IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago1IDAgb2JqCjw8Ci9Db250ZW50cyAxMCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA4IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgOCAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL0F1dGhvciAoUGFzdXBhdGhpIEspIC9DcmVhdGlvbkRhdGUgKEQ6MjAyNjExMTMwNzU0NDArMDAnMDAnKSAvQ3JlYXRvciAoXCh1bnNwZWNpZmllZFwpKSAvS2V5d29yZHMgKCkgL01vZERhdGUgKEQ6MjAyNjExMTMwNzU0NDArMDAnMDAnKSAvUHJvZHVjZXIgKFJlcG9ydExhYiBQREYgTGlicmFyeSAtIFwob3BlbnNvdXJjZVwpKSAKICAvU3ViamVjdCAoXCh1bnNwZWNpZmllZFwpKSAvVGl0bGUgKFBhc3VwYXRoaSBLIC0gUmVzdW1lKSAvVHJhcHBlZCAvRmFsc2UKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0NvdW50IDIgL0tpZHMgWyA0IDAgUiA1IDAgUiBdIC9UeXBlIC9QYWdlcwo+PgplbmRvYmoKOSAwIG9iago8PAovRmlsdGVyIFsgL0FTQ0lJODVEZWNvZGUgL0ZsYXRlRGVjb2RlIF0gL0xlbmd0aCAyOTAwCj4+CnN0cmVhbQpHYiEkST5CZWZAKDw+PjIuSj9dLEhSXV9PIm87M2JPO1EidChoZihVal5mdFAwWDdFTkZZVyFaSWVeNl43TTVjVC9VJiowYCUuNDVkKjJMOF5BTVQoJTs9ZF8rV25CL2krclZkNHJAW3AwVW1dJ2xTY3RpP25hXDxsYmszU0Y6P3VHQ3MuRSphM3JeQ2NjNUc0YTFCWVZIRUk6W0A8RzhhIVNxa09dZTFSZyc+MS89TklwbTRFPEhxSzNKLUxRcWsmbT9SYD9bWDFBTEp0Yl5SQG81QFZoVXI3TyQzZ1hhIStFRDc4TEZeWHQ8bV9HXTtXaEloTVtQVWFuSzdlWnBLKWhiZG5hPjx1XXIobWxCYGU9TUtHI3JlSiMpal1IbmlYXS8hOkpBKG5ZKXNIXDAiZUA3WWY5MSgnQTw3NVNeNEZoPV1kMDAmWHItJmorY0UlV1ByZU1EJFptYmojNVBkQkNubUdBWyZAPWRrOiYzZ0onRkdGcHRgNjM/VUg8NEQqXG5hIUhaX3VSKD8jVzEiUFk1byRGXz5MZGUpKlpqcm9CK2UsQnJGYUZeXiFVPlRUP05qUHJmV21ndCosMU5nYFxIaFtab3BzQUQ2ZjtkWkAvTy8rIiIjJykuWDNmPj9WYGVfNFo2YFZmXm1eRTMiWzMxZjJubU9NakFFRzM9YipRV0pDR2VFXElCc2drVWhsVSVbXWFBYGhPNz08LiYiNVRkRzIqbDZTIiwxdVhMIS5HQUxwUTVaOTdUKzJZTGJAbVYmZjNmTEVpXCJsNkIwW1hfN2RLPGBQbiJXKjREalZlNHNhUTE+WzNsSTFyXnVLSGInTGIoPycsbmAxdVIvakZsWnBTMy9oR0lYc3MrYz50Yi5jQ2RCQ2I0MzMqWTJqWm9tNyFhI2UpVmx0UGNVLUJhbFxndTNLPURlVCJwYj5wP3AtZWhwT2gtZypSXjFiRTYiR11rdWNXVVxaSyNQc1EtIVBkUWQ8MVFLbTBNZmZrOUc1PnJaL25Vay8jOjVqNy9QWEJPQWRPO09waTJNSEE/QS90Wk4hWE9Oc3MiIUlfIiQ7b0VELldHWThiJic5Zk9kQlpoayIsVTljRFY4MixNTCRaUXBoVEY0RUpkJUZOK19tZjttSSUsb15Nb2lvKUk/XURSZ2EqUzI5bW43MmcwJl9oQGFsX2s6Oj9zQF1UdS0lJ2tRSE1GUlRLZFlxP0hTZlddTkFudWNTckpeJihmc3ByXU41WUhJQVcqTDw/TDwlRmdnMUlcQWFOISkzXlpFbkRpdEJHZkdFOD9lNSdKPSFJaTwtcUNwSzk7PkMpaDROMXRJWUw7bChDTHAxPzsqPFhQazBqTXJdbUInb2pwSmdVVTFCPXExLDNKYzxzQ2osImpvJHBsLy0ubD4zSVBQODtiQzZlOUJoJDpbVypUWkJsIklobDBdN2s+JEk+Xz5FQVVxNFYwQSVsK2crW1ZDRWhXWzhPWS1Gb3VkNyJgVW5tXz1nUik8WDtzQkEvZ1hwUVwxckYqK3InMzEzITYmPjJDPW0+cGFySVM8VDMjNG8vX10ocUxMQ1tjMSdRamE1T2tDWSs2NDgiOiZkV3Mial0vQUAuSHIrSV0jR2VHZ3FCL1g7VjxQVE8xJC8iQzc1MXFyUiphYlNfc0c/W0YwJ3NpSTZRYVlZJVY2a1Q+PU9pKyZpVTdjbjI8Uy47Li1FNGZuaC1pdTVMXT9TUCJKb0FUPFNvOEQ5WypWYUxyZD50USJVVFtiTEhNY106RERxZ14yVmUvS2loXCYrSyxGdHUhOCMwOFRuT3BbakIyVCpbWDYkblhDNSdnSWIrcmNKYlMhYUZRPSFYcypcM11DdThibkFcZ0FiSEVRN3RfQWFiIytPV2F0cmleUHE7Z1hdZis7bldmcGNPa3Q+QSw6ckNoJkxCYHMuXThYdG5tKFpJOlVcZWtpJlMiZ0dgUENSP1MvWEM6T09EQyd0XVBhTUUnYmgqYHEtQHUoITtGM2tES0xENFZaWmRnNDxDSzpDazVlO0hMdVRJXyMlSjxgcyZ0Z1huUUpxPD4rbjZeODllSEtlW0VNLyo5RyJpSy5eNyM+PTk3Nm4xa0g9NjUkRCJaLikwPEUiYDhSaEw6Mj1XVzZXJm0rWmFyMEIkVktQNjFkQS5QdWUuO1hqUlIjNkExZy4sKkpgZTAkdE5kKz1aOmJSNyw9OmZdVE4jUitBWUp0O25gYE5EYSMiIlEmdSMvSEJSUTdaQS5xNClfRllwI3NcQyplbDFJOTdZPWJ1J2NycDlvc2k4ZFFdIj4yOjZjJSU1InQtYDkoJjRMJnUjV0pVZVIrREcpTGEiXkBGPllMKWk6SUc7ckdYKWpGO24tSjkhJSFqO15XUjtHYDYzczZwVUtKMj5MWVFYZ1xFWSMsXSJaamVaQlknVVt1SzoqXGdwbEVQYUZ0S1Y6czg/WTIhZWhENCdrP08uMGZEOCdzX11rXmVwYVZYbjgmVVwiOV47MFA6ZzhHIV1xcygnW19zMT5XZy1PTCkobltSKGIqaWxyQWJZbm5yQD0sVSZpJz5UPiNFLzddZmFQYT1LZS07UjR0aD9NYW9gbkQ9NEUlSCNTZnNgaThbcjl1PWlVJW9xJVpfMkpkLFA7KmM6P2ZvVl8+Ti9DTiQmMDFJQFxXQW8tQWZZI3BKYyVXTScnI1svTlI9LlcmSCFtQltJUWlabWA9K0guOCgsZl4wPz1mMlFXM1FaNkYlcl04c1w5JEJHJWBDOTYsUD9naD0mNG9yKj5LVmRuYGRuQ1FFV2UyIlssT0hIR0lnTyopRStoT2xvUC5PQDkhRj9EJz09OkM7bFc/MTNydC9LYlBHTSxmKiFQLjVZYVVTM1o+JjtHWE1kOVwvNDplY1BNTE9gZmIjby9yMUZQKDctMC1JUiJbNmUxdSwjX28mYk0hLDElOCpnVS00ZUlbajw+RjpcRW4hYXBYZCNUO2k6W15UUFkrRlE8XkthcEYmOCFaLW5Pb0UhJ1ItN21DJT9pJSQnYGtAS1ZiUk9ySzxrXUxXbnMsViRuT2guJTxQPDNWXVsqPlBFRTJQbzY7b05WYkdMaUYpXE5bPTZmSUloVjNlWS8vazpzTTJCTE9eJlFNLS0pOiMrMkQtYyRwIjUrJ0RWVTxaTFRkcCVOPEVXdCNubVIjUlQmQlk4O2pJPFttbzlXazkwX2Y6bVZPNG5QM0hNJXRzSSQhLERLJVYsdSVIViNXIytsMGgwJWlEJVNvWHEiWTZMNUk9PDQ8ay9WLnE3QHRCYD0hbTIqUEdaYigvcD0ycUBWOXVeOWMtTmonOSNLby09Yy0tYzcqbCRWP1kkP10qYil0J0MoPWBJOydbUWFvXlV0ImldJzNNVG5MPk5RQmFNQDs5KFhyTmRFQkApUmY1QVI4JzJQQCtySykvWG0zT0hGSDJTVzlrVSphcU5yOlpFbUhaXC1GQidXYD81QCZbR1d1YC1nJF5mclItKEkoZ1NqY1BkY1kpTW1lJGJeJlJYXTtbK14tIlQwR0JeYGRJQCd0YlstaVxdWDwtYHBzWztiUT4lcChpXkhzNC5SNENrXVhZTnJUS0JSckU4ImdnKylORS47WCheN2M9YUIvZ280N1w3cWpjWTk5cGhSbl0pL1pTOVlFbVY6NmUwbl8xSSs0ViZsR0VbSD4zTywvPCg3Tlo2YDBBPGZDIm0vcF8xbXJETSRYX1ZKWHBpJUdgKCgnc2M7RWEhYFNgT1hPLSNdWSs3a2JdKEJaKjI5QSgtKGpqb1gsXVFTRkFPSlJEMiwiTyl1T0I9YjNXWGVWJWMrQmdROldOJmRwL1RXXFBJcnJfP1RyNzF+PmVuZHN0cmVhbQplbmRvYmoKMTAgMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMTQzOQo+PgpzdHJlYW0KR2F1YFNfL2U3IyZBQHJrcVdNYCUpK2RAYURBXys3TmgrLlRTREFmTksvPyxfTiY4XSQjYD5iX3EhQXEmJG5OWidWOTY2aGBgVD9kXlhyRWolaiNpX28nRl0wIkxxLmBpbDIpSExMXm0kY2c9Iz0jTTcpTnBHOzguQUVeUWlmRiVjRXBOcGNsJSIlYWhoU29mUCZVOSFeLTdJVko/KDh0cU03V0REM0xpPFxyVmVsTF43KmpDXltDMTg5ZXBoRkpwYzI0M0tGUEtmLy8rPy0rXTQ8Sk0qYTNuY0Q+Y25YJVJtKSxZV1s7R1FgdVcyMyVhO1FzXUNKOkZMM1NQMVJiYnQ4PFxYZ3FRIVsqZjlzTjUvZiVNVDhYIztTYkFdI3RadFNFYSo1SiNGc05PJWpWISopOWJZSk5ULiI5VWY+LFopIS1eR0tVYVdtPmUwMFUmRSFYcyM3OWE3I1dzKDwlYyNuYUw6XCE2QiVEJy9oIllaPj81U15PNjNxSSUqP3VEaTtuLjpINkctM2JRRj06VEBhRiI/ODIrO15MWnE8XkluKGJlOyIhODopNGZoJ2RvOEFJXlBYLSQqO0dvVmhoPzsqTldUTT1MIVdGYjtFSmhqKCpsWCRYN1plT0hdZFY5KmhNPCEtUlVsMzJITmtfXVlfZHAlO1ptNTVkSFAlYEMtT0IrQmk4RjhYMzJvN2EqPUtQYl1LYDIkM29WYTtVKUZlZ1ImRjIrOV84aFFSLlc/Y0sjOTRwXXMzWDVlXSpmVyQ4VVAwKUVxSms/RFMmclQqKVYlZkJYL0NYRWJWOUU/SGhHRD1RXicoWVFGZ1JlWTxYWWxnIlhUKGxWNj5LMFcrJSowYmdcKWddcUlONEZtLDEjZ0xxPFpbTWZrZjpENEZmTT03UD5YZzBtbEQhPzBea0VBL2IpYzI6bF0icWdhNEBSSFI3VlBgOkZVJ0VMV0QiYTczUk1ta0lvIi09I1RYYzxOckY0W25OJ0VRMW5GT19FJkAxc0hkYUtlJmEoamMuPkYoI19GOUsmOWRFJToxOEFrX1ljV2BLS1FfKi5UaVU+TlEibmYwaUNvbSdjciM7XiJ0aGQ0MXNMJTNUTE8oP0E7OCZyXW4yXio0VSFrJj1jdWRzWUxYLk1wTDcuRlMnNHV1Qy9WRCwwJzdoLFBXSTcxXFFOIlYmbjVRQS0pQDgtKS8kbCFFWEVVW3BdY2NPQUczTyQ5dShJdUNmUVVcVjcsN3MkXnQvbjlmKmQpaidXUFQ+XGRBUkUiMHMjaEplTUlqaTRePCs9SHRgJ1I6WGpMQkUubFIkPzM4UUNpKS1oLjNDRkEkZD1RWV0/LCpUYjdqXVtlNnEoR2UvMExwQ2g2W2lBcVAlZFdGNlJmJDgwQVg4LmpnXkhTPFtZRk5qV0ImZShfT0NBZDdkOiczbjRiNG9NNi89Oy1MLWA0KGczME4vPGpIbG8mNVcvST4uYGxzNi5ULyxGP3FLKUUuXXFJWXI1SHE2VD1GXnBkPkNaLmkwLk4tSWw/SDFiRElpUjtmW0xjPFtYPiUzbEJnMEJpOkEjZCw3bUxQJWI6cSFJY1phP0sxV0wtKGQrWUZgYi9BRmVwSDt1WDg4ZUpgVzM5OHBERTxsRiRSWmNabC5UZjtXIjBUKFZbInBtO1kqZnArTWQnaF08aHNkMXQkMS50VF1kTk1zaE5nMy9SZEorb0NTZkZHZG86LkQrbShvXE0zSzg5Qltwb29aWE9DaFdFVzBRS08jPFxRREROZCshaEQqXE8iVTBZNyNJTiNmJDU/cypDTCVzMzUwbl0idTJKcUE+QitFLjZQQGkkN3BhbS8lQ00yQjpXTXJqblFERFkwZzlMU09MOilcITsqczZJaFFgdWgxUnBYIi0lNFlrc141RjpQczYzfj5lbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCAxMQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwNjEgMDAwMDAgbiAKMDAwMDAwMDEwMiAwMDAwMCBuIAowMDAwMDAwMjA5IDAwMDAwIG4gCjAwMDAwMDAzMjEgMDAwMDAgbiAKMDAwMDAwMDUyNCAwMDAwMCBuIAowMDAwMDAwNzI4IDAwMDAwIG4gCjAwMDAwMDA3OTYgMDAwMDAgbiAKMDAwMDAwMTA4MSAwMDAwMCBuIAowMDAwMDAxMTQ2IDAwMDAwIG4gCjAwMDAwMDQxMzcgMDAwMDAgbiAKdHJhaWxlcgo8PAovSUQgCls8NjhkNjAyYzhhMzg1OGNhNTczYTZkMTdkODMyM2EzZTY+PDY4ZDYwMmM4YTM4NThjYTU3M2E2ZDE3ZDgzMjNhM2U2Pl0KJSBSZXBvcnRMYWIgZ2VuZXJhdGVkIFBERiBkb2N1bWVudCAtLSBkaWdlc3QgKG9wZW5zb3VyY2UpCgovSW5mbyA3IDAgUgovUm9vdCA2IDAgUgovU2l6ZSAxMQo+PgpzdGFydHhyZWYKNTY2OAolJUVPRgo=",
+          bs = document.querySelectorAll(".rs");
+        if (!window.claude || !claude.use) return;
+        claude
+          .use("downloads")
+          .then(function (d) {
+            if (!d) return;
+            bs.forEach(function (b) {
+              b.hidden = false;
+              b.onclick = function () {
+                var bin = atob(PDF),
+                  u = new Uint8Array(bin.length),
+                  i;
+                for (i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+                d.save({
+                  filename: "Pasupathi-K-Resume.pdf",
+                  data: new Blob([u], { type: "application/pdf" }),
+                }).then(
+                  function () {
+                    b.textContent = "✓ Saved";
+                  },
+                  function (e) {
+                    if (e && e.code === "declined") return;
+                    b.textContent = "Unavailable";
+                  },
+                );
+              };
+            });
+          })
+          .catch(function () {});
+      })();
+    </script>
+  </body>
+</html>
